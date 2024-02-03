@@ -14,6 +14,6 @@ app.use(usuarioRoutes);
 app.use(clientRoutes);
 app.use(officeRoutes);
 
-const port = process.env.PORT || 5432
+const port = process.env.PORT || 3001
 
 app.listen(3001);
