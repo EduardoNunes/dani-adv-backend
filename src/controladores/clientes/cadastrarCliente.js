@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const cadastrarCliente = async (req, res) => {
   const { nome, email, senha, tipoCadastro } = req.body;
+
   try {
     const senhaCriptografada = await bcrypt.hash(senha, 10);
 
