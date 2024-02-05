@@ -1,4 +1,4 @@
-require("dotenv").config
+require("dotenv").config({ path: "./src/.env" });
 
 const express = require("express");
 const clientRoutes = require("./rotas/clientRoutes");
@@ -15,6 +15,6 @@ app.use(usuarioRoutes);
 app.use(clientRoutes);
 app.use(officeRoutes);
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5432;
 
-app.listen(port);
+app.listen(port, () => console.log(`Groovando na porta ${port}`));
