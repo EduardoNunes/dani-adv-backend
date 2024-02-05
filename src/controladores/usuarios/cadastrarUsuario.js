@@ -1,7 +1,6 @@
 const pool = require("../../conexao");
 const bcrypt = require("bcrypt");
 
-
 const cadastrarUsuario = async (req, res) => {
   const { nome, email, senha, tipoCadastro } = req.body;
 

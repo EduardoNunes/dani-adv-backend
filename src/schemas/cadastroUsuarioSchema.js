@@ -18,7 +18,7 @@ const cadastroUsuarioSchema = joi.object({
     .required()
     .min(8)
     .pattern(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%?&])[0-9a-zA-Z@$!%?&]{8,}$/
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%?&])[0-9a-zA-Z@$!%?&#*]{8,}$/
     )
     .messages({
       "any.required": "O campo senha é obrigatório",
