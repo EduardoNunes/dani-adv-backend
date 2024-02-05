@@ -1,4 +1,5 @@
 require("dotenv").config
+
 const express = require("express");
 const clientRoutes = require("./rotas/clientRoutes");
 const officeRoutes = require("./rotas/officeRoutes");
