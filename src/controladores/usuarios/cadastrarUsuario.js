@@ -2,7 +2,7 @@ const pool = require("../../conexao");
 const bcrypt = require("bcrypt");
 
 
-const cadastrarCliente = async (req, res) => {
+const cadastrarUsuario = async (req, res) => {
   const { nome, email, senha, tipoCadastro } = req.body;
 
   try {
@@ -22,4 +22,4 @@ const cadastrarCliente = async (req, res) => {
   }
 };
 
-module.exports = cadastrarCliente;
+module.exports = cadastrarUsuario;

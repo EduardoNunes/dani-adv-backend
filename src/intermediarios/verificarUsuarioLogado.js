@@ -6,7 +6,7 @@ const verificarUsuarioLogado = async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    return res.status(401).json({ mensagem: "Não autenticado1." });
+    return res.status(401).json({ mensagem: "Não autenticado..." });
   }
 
   const token = authorization.split(" ")[1];

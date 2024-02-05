@@ -4,7 +4,7 @@ create table usuarios (
   id serial primary key,
   nome varchar (100) not null,
   email varchar (100) not null,
-  senha varchar (16) not null,
+  senha varchar (100) not null,
   cadastro varchar (20) not null
  );
 
