@@ -27,7 +27,7 @@ const cadastroUsuarioSchema = joi.object({
       "string.min": "A senha deve ter no mínimo 8 caracteres",
       "string.trim": "O campo senha não pode conter espaços em branco",
       "string.base": "Insira uma senha válida",
-      "lowercaseLetters": "A senha deve conter pelo menos 1 letra minúscula",
+      "pattern.lowercaseLetters": "A senha deve conter pelo menos 1 letra minúscula",
       "uppercaseLetters": "A senha deve conter pelo menos 1 letra maiúscula",
       "numbers": "A senha deve conter pelo menos 1 número",
       "specialCharacters": "A senha deve conter pelo menos 1 caractere especial",
