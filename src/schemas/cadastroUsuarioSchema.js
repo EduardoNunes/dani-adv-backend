@@ -17,7 +17,7 @@ const cadastroUsuarioSchema = joi.object({
     .string()
     .required()
     .min(8)
-    .pattern(/^(?=.*[a-z])/, { name: "lowercaseLetters" })
+    .pattern(/^(?=.*[a-z])/, { name: "lowercaseLetters", messages: "A senha deve conter pelo menos 1 letra minúscula" })
     .pattern(/^(?=.*[A-Z])/, { name: "uppercaseLetters" })
     .pattern(/^(?=.*\d)/, { name: "numbers" })
     .pattern(/^(?=.*[@$!%?&])/, { name: "specialCharacters" })
