@@ -17,20 +17,17 @@ const cadastroUsuarioSchema = joi.object({
     .string()
     .required()
     .min(8)
-    .pattern(/^(?=.*[a-z])/, { name: "lowercaseLetters", messages: "A senha deve conter pelo menos 1 letra minúscula" })
-    .pattern(/^(?=.*[A-Z])/, { name: "uppercaseLetters" })
-    .pattern(/^(?=.*\d)/, { name: "numbers" })
-    .pattern(/^(?=.*[@$!%?&])/, { name: "specialCharacters" })
+    .pattern(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])[0-9a-zA-Z!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\]{8,}$/
+    )
     .messages({
       "any.required": "O campo senha é obrigatório",
       "string.empty": "O campo senha é obrigatório",
       "string.min": "A senha deve ter no mínimo 8 caracteres",
       "string.trim": "O campo senha não pode conter espaços em branco",
       "string.base": "Insira uma senha válida",
-      "pattern.lowercaseLetters": "A senha deve conter pelo menos 1 letra minúscula",
-      "uppercaseLetters": "A senha deve conter pelo menos 1 letra maiúscula",
-      "numbers": "A senha deve conter pelo menos 1 número",
-      "specialCharacters": "A senha deve conter pelo menos 1 caractere especial",
+      "string.pattern.base":
+        "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial",
     }),
   tipoCadastro: joi.required().messages({
     "any.required": "O campo tipo de cadastro deve ser selecionado",
