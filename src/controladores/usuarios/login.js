@@ -13,13 +13,13 @@ const login = async (req, res) => {
     );
 
     if (usuario.rowCount < 1) {
-      return res.status(404).json({ mensagem: "Email e/ou senha inválido(s)." });
+      return res.status(404).json({ mensagem: "Email e/ou senha inválido(s).." });
     }
 
     const senhaValida = await bcrypt.compare(senha, usuario.rows[0].senha);
 
     if (!senhaValida) {
-      return res.status(400).json({ mensagem: "Email e/ou senha inválido(s)." });
+      return res.status(400).json({ mensagem: "Email e/ou senha inválido(s)..." });
     }
 
     if (usuario.rows[0].cadastro !== tipoCadastro) {
