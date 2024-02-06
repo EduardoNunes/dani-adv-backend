@@ -27,22 +27,22 @@ const cadastroUsuarioSchema = joi.object({
       "string.trim": "O campo senha não pode conter espaços em branco",
       "string.base": "Insira uma senha válida",
     })
-    .custom((value, helpers) => {
+    .custom((value) => {
       if (!/(?=.*[a-z])/.test(value)) {
-        return helpers.message(
+        return message(
           "A senha deve conter pelo menos 1 letra minúscula"
         );
       }
       if (!/(?=.*[A-Z])/.test(value)) {
-        return helpers.message(
+        return message(
           "A senha deve conter pelo menos 1 letra maiúscula"
         );
       }
       if (!/(?=.*\d)/.test(value)) {
-        return helpers.message("A senha deve conter pelo menos 1 número");
+        return message("A senha deve conter pelo menos 1 número");
       }
       if (!/(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])/.test(value)) {
-        return helpers.message(
+        return message(
           "A senha deve conter pelo menos 1 caractere especial"
         );
       }
