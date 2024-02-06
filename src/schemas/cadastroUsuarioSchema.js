@@ -28,20 +28,20 @@ const cadastroUsuarioSchema = joi.object({
       "string.base": "Insira uma senha válida",
     })
     .custom((value) => {
-      if (!/(?=.*[a-z])/.test(value)) {
+      if (!/(?=.*[a-z])/) {
         return message(
           "A senha deve conter pelo menos 1 letra minúscula"
         );
       }
-      if (!/(?=.*[A-Z])/.test(value)) {
+      if (!/(?=.*[A-Z])/) {
         return message(
           "A senha deve conter pelo menos 1 letra maiúscula"
         );
       }
-      if (!/(?=.*\d)/.test(value)) {
+      if (!/(?=.*\d)/) {
         return message("A senha deve conter pelo menos 1 número");
       }
-      if (!/(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])/.test(value)) {
+      if (!/(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])/) {
         return message(
           "A senha deve conter pelo menos 1 caractere especial"
         );
