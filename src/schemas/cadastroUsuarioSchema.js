@@ -27,7 +27,25 @@ const cadastroUsuarioSchema = joi.object({
       "string.trim": "O campo senha não pode conter espaços em branco",
       "string.base": "Insira uma senha válida",
       "string.pattern.base":
-        "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 dos seguintes símbolos @,$,!,%,? ou &",
+        "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial",
+      "string.pattern.invert": [
+        {
+          message: "A senha deve conter pelo menos 1 número",
+          regexp: /^(?=.*\d)/,
+        },
+        {
+          message: "A senha deve conter pelo menos 1 letra minúscula",
+          regexp: /^(?=.*[a-z])/,
+        },
+        {
+          message: "A senha deve conter pelo menos 1 letra maiúscula",
+          regexp: /^(?=.*[A-Z])/,
+        },
+        {
+          message: "A senha deve conter pelo menos 1 caractere especial",
+          regexp: /^(?=.*[@$!%?&])/,
+        },
+      ],
     }),
   tipoCadastro: joi.required().messages({
     "any.required": "O campo tipo de cadastro deve ser selecionado",
