@@ -13,7 +13,7 @@ const cadastroUsuarioSchema = joi.object({
     "string.base": "Insira um e-mail válido",
     "string.trim": "O campo e-mail não pode conter espaços em branco",
   }),
-  senha: Joi.string()
+  senha: joi.string()
     .required()
     .min(8)
     .pattern(
