@@ -27,27 +27,21 @@ const cadastroUsuarioSchema = joi.object({
       "string.trim": "O campo senha não pode conter espaços em branco",
       "string.base": "Insira uma senha válida",
     })
-    .custom((value) => {
-      if (!/(?=.*[a-z])/) {
-        return message(
-          "A senha deve conter pelo menos 1 letra minúscula"
-        );
+    .custom((value, helpers) => {
+      if (!/(?=.*[a-z])/.test(value)) {
+          return helpers.message("A senha deve conter pelo menos 1 letra minúscula");
       }
-      if (!/(?=.*[A-Z])/) {
-        return message(
-          "A senha deve conter pelo menos 1 letra maiúscula"
-        );
+      if (!/(?=.*[A-Z])/.test(value)) {
+          return helpers.message("A senha deve conter pelo menos 1 letra maiúscula");
       }
-      if (!/(?=.*\d)/) {
-        return message("A senha deve conter pelo menos 1 número");
+      if (!/(?=.*\d)/.test(value)) {
+          return helpers.message("A senha deve conter pelo menos 1 número");
       }
-      if (!/(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])/) {
-        return message(
-          "A senha deve conter pelo menos 1 caractere especial"
-        );
+      if (!/(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])/.test(value)) {
+          return helpers.message("A senha deve conter pelo menos 1 caractere especial");
       }
       return value;
-    }),
+  }),
   tipoCadastro: joi.required().messages({
     "any.required": "O campo tipo de cadastro deve ser selecionado",
   }),
