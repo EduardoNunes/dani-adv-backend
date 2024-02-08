@@ -10,12 +10,14 @@ const autenticarEditarProcesso = require("../intermediarios/autenticarEditarProc
 const cadastrarProcesso = require("../controladores/escritorio/cadastrarProcessoEscritorio");
 const cadastrarProcessoSchema = require("../schemas/cadastrarProcessoSchema");
 const autenticarCadastroProcesso = require("../intermediarios/autenticarCadastroProcesso");
+const cadastrarClienteEscritorio = require("../controladores/escritorio/cadastrarClienteEscritorio");
 
 const rotas = express();
 
 rotas.use(verificarUsuarioLogado);
 
 rotas.get("/processosEscritorio", listarProcessos);
+rotas.post("/cadastrarClienteEscritorio", cadastrarClienteEscritorio);
 rotas.delete("/deletarProcesso/:id", deletarProcesso);
 rotas.put("/editarProcessoEscritorio/:id", autenticarEditarProcesso(editarProcessoSchema), editarProcesso )
 rotas.post("/cadastrarProcesso", autenticarCadastroProcesso(cadastrarProcessoSchema), cadastrarProcesso)

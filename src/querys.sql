@@ -22,6 +22,29 @@ create table processos (
   infos text not null
   );
 
+  CREATE TABLE cliente_dados (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  nascimento DATE,
+  genero VARCHAR(30),
+  nacionalidade VARCHAR(30),
+  celular VARCHAR(25) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  redes_sociais VARCHAR(255),
+  rg VARCHAR(20) NOT NULL,
+  cpf VARCHAR(14) NOT NULL,
+  profissao VARCHAR(100),
+  estado_civil VARCHAR(30),
+  formacao_academica VARCHAR(255),
+  cep VARCHAR(10) NOT NULL,
+  cidade VARCHAR(100) NOT NULL,
+  bairro VARCHAR(100) NOT NULL,
+  uf CHAR(2) NOT NULL,
+  logradouro VARCHAR(255) NOT NULL,
+  complemento VARCHAR(255),
+  infos TEXT
+);
+
 insert into usuarios (nome, email, senha, cadastro) 
 values ('Eduardo Lago Nunes', 'eduardolagonunes@gmail.com', '123456', 'cliente');
 
