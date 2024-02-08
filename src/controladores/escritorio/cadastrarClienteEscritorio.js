@@ -55,7 +55,9 @@ const cadastrarClienteEscritorio = async (req, res) => {
     if (error.code === "23505") {
       const regex = /\(([^)]+)\)/;
       const matches = error.detail.match(regex);
-      return res.status(409).json({ mensagem: `Erro no ${matches} já está cadastrado`});
+      return res
+        .status(409)
+        .json({ mensagem: `Erro no ${matches} já está cadastrado` });
     }
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
