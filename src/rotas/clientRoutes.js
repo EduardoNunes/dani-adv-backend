@@ -5,7 +5,6 @@ const {
 } = require("../controladores/clientes/listarProcessoCliente");
 
 const obterCliente = require("../controladores/clientes/obterCliente");
-const atualizarUsuario = require("../controladores/usuarios/atualizarUsuario");
 const listarClientes = require("../controladores/clientes/listarClientes");
 
 
