@@ -20,12 +20,13 @@ const cadastrarClienteEscritorio = async (req, res) => {
     uf,
     logradouro,
     complemento,
+    status,
     infos,
   } = req.body;
 
   try {
     await pool.query(
-      "insert into cliente_dados (nome, nascimento, genero, nacionalidade, celular, email, redes_sociais, rg, cpf, profissao, estado_civil, formacao_academica, cep, cidade, bairro, uf, logradouro, complemento, infos) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)",
+      "insert into cliente_dados (nome, nascimento, genero, nacionalidade, celular, email, redes_sociais, rg, cpf, profissao, estado_civil, formacao_academica, cep, cidade, bairro, uf, logradouro, complemento, status, infos) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)",
       [
         nome,
         nascimento,
@@ -45,6 +46,7 @@ const cadastrarClienteEscritorio = async (req, res) => {
         uf,
         logradouro,
         complemento,
+        status,
         infos,
       ]
     );

@@ -53,6 +53,7 @@ const cadastroClienteEscritorioSchema = joi.object({
     "string.empty": "O campo logradouro é obrigatório",
   }),
   complemento: joi.string().allow(null, ''),
+  status: joi.string(),
   infos: joi.string().allow(null, ''),
 });
 
