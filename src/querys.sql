@@ -25,7 +25,7 @@ create table processos (
   CREATE TABLE cliente_dados (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(255) NOT NULL,
-  nascimento DATE,
+  nascimento VARCHAR(10),
   genero VARCHAR(30),
   nacionalidade VARCHAR(30),
   celular VARCHAR(25) NOT NULL,

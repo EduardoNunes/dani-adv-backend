@@ -6,9 +6,9 @@ const cadastroClienteEscritorioSchema = joi.object({
     "any.required": "O campo nome é obrigatório",
     "string.base": "Insira um nome válido",
   }),
-  nascimento: joi.string().allow(null, ''),
-  genero: joi.string().allow(null, ''),
-  nacionalidade: joi.string().allow(null, ''),
+  nascimento: joi.string().allow(null, ""),
+  genero: joi.string().allow(null, ""),
+  nacionalidade: joi.string().allow(null, ""),
   celular: joi.string().required().messages({
     "any.required": "O campo celular é obrigatório",
     "string.empty": "O campo celular é obrigatório",
@@ -20,7 +20,7 @@ const cadastroClienteEscritorioSchema = joi.object({
     "string.base": "Insira um e-mail válido",
     "string.trim": "O campo e-mail não pode conter espaços em branco",
   }),
-  redes_sociais: joi.string().allow(null, ''),
+  redes_sociais: joi.string().allow(null, ""),
   rg: joi.string().required().messages({
     "any.required": "O campo RG é obrigatório",
     "string.empty": "O campo RG é obrigatório",
@@ -29,9 +29,9 @@ const cadastroClienteEscritorioSchema = joi.object({
     "any.required": "O campo CPF é obrigatório",
     "string.empty": "O campo CPF é obrigatório",
   }),
-  profissao: joi.string().allow(null, ''),
-  estado_civil: joi.string().allow(null, ''),
-  formacao_academica: joi.string().allow(null, ''),
+  profissao: joi.string().allow(null, ""),
+  estado_civil: joi.string().allow(null, ""),
+  formacao_academica: joi.string().allow(null, ""),
   cep: joi.string().required().messages({
     "any.required": "O campo CEP é obrigatório",
     "string.empty": "O campo CEP é obrigatório",
@@ -52,9 +52,9 @@ const cadastroClienteEscritorioSchema = joi.object({
     "any.required": "O campo logradouro é obrigatório",
     "string.empty": "O campo logradouro é obrigatório",
   }),
-  complemento: joi.string().allow(null, ''),
+  complemento: joi.string().allow(null, ""),
   status: joi.string(),
-  infos: joi.string().allow(null, ''),
+  infos: joi.string().allow(null, ""),
 });
 
 module.exports = cadastroClienteEscritorioSchema;

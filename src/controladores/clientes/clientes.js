@@ -29,27 +29,6 @@ const atualizarCliente = async (req, res) => {
   }
 };
 
-const deletarCliente = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const usuarios = await pool.query("select * from usuarios where id = $1", [
-      id,
-    ]);
-
-    if (usuarios.rows.lenght === 0) {
-      return res.status(404).json({ mensagem: "Este usuário não existe" });
-    }
-
-    await pool.query("delete from usuarios where id = $1", [id]);
-
-    return res.status(200).json({ mensagem: "Usuário deletado" });
-  } catch (error) {
-    console.error(error.message);
-    return res.status(500).json({ mensagem: "Erro interno do servidor" });
-  }
-};
-
 module.exports = {
-  deletarCliente,
+  atualizarCliente,
 };
