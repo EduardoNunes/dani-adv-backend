@@ -33,11 +33,15 @@ const cadastrarProcessoSchema = joi.object({
     "any.required": "O campo atualizado é obrigatório",
     "string.empty": "O campo atualizado é obrigatório",
   }),
+  status: joi.string().required().messages({
+    "any.required": "O campo infos é obrigatório1",
+    "string.empty": "O campo infos é obrigatório2",
+  }),
   infos: joi.string().required().messages({
     "any.required": "O campo infos é obrigatório1",
     "string.empty": "O campo infos é obrigatório2",
   }),
-  usuarios_id: joi.number().required().messages({
+  cliente_id: joi.number().required().messages({
     "any.required": "O campo usuarios_id é obrigatório",
     "number.empty": "O campo usuarios_id é obrigatório",
   }),

@@ -10,20 +10,21 @@ const cadastrarProcesso = async (req, res) => {
     comarca,
     data_entrada,
     atualizado,
+    status,
     infos,
-    usuarios_id,
+    cliente_id,
   } = req.body; 
 
   try {
-    if (!usuarios_id) {
+    if (!cliente_id) {
       return res
         .status(400)
-        .json({ mensagem: "O campo usuarios_id é obrigatório" });
+        .json({ mensagem: "O campo cliente_id é obrigatório" });
     }
 
     const usuarioExistente = await pool.query(
       "SELECT id FROM usuarios WHERE id = $1",
-      [usuarios_id]
+      [cliente_id]
     );
 
     if (usuarioExistente.rows.length === 0) {
@@ -31,7 +32,7 @@ const cadastrarProcesso = async (req, res) => {
     }
 
     await pool.query(
-      "insert into processos (autor, reu, numero, vara, juiz, comarca, data_entrada, atualizado, infos, usuarios_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+      "insert into processos (autor, reu, numero, vara, juiz, comarca, data_entrada, atualizado, status, infos, cliente_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
       [
         autor,
         reu,
@@ -41,8 +42,9 @@ const cadastrarProcesso = async (req, res) => {
         comarca,
         data_entrada,
         atualizado,
+        status,
         infos,
-        usuarios_id,
+        cliente_id,
       ]
     );
 

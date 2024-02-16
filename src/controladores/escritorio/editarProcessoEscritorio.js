@@ -11,6 +11,7 @@ const editarProcesso = async (req, res) => {
     comarca,
     data_entrada,
     atualizado,
+    status,
     infos,
   } = req.body;
 
@@ -24,7 +25,7 @@ const editarProcesso = async (req, res) => {
     }
 
     await pool.query(
-      "update processos set autor = $1, reu = $2, numero = $3, vara = $4, juiz = $5, comarca = $6, data_entrada =  $7, atualizado = $8, infos = $9 where id = $10",
+      "update processos set autor = $1, reu = $2, numero = $3, vara = $4, juiz = $5, comarca = $6, data_entrada =  $7, atualizado = $8, status = $9, infos = $10 where id = $11",
       [
         autor,
         reu,
@@ -34,6 +35,7 @@ const editarProcesso = async (req, res) => {
         comarca,
         data_entrada,
         atualizado,
+        status,
         infos,
         id,
       ]

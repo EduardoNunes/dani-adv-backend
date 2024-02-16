@@ -28,8 +28,12 @@ const editarProcessoSchema = joi.object({
   data_entrada: joi.string().required().messages({
     "any.required": "O campo data_entrada é obrigatório",
     "string.empty": "O campo data_entrada é obrigatório",
-  }),
+  }),  
   atualizado: joi.string().required().messages({
+    "any.required": "O campo atualizado é obrigatório",
+    "string.empty": "O campo atualizado é obrigatório",
+  }),
+  status: joi.string().required().messages({
     "any.required": "O campo atualizado é obrigatório",
     "string.empty": "O campo atualizado é obrigatório",
   }),

@@ -22,7 +22,7 @@ create table processos (
   infos text not null
   );
 
-  CREATE TABLE cliente_dados (
+CREATE TABLE cliente_dados (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(255) NOT NULL,
   nascimento VARCHAR(10),
@@ -42,6 +42,7 @@ create table processos (
   uf CHAR(2) NOT NULL,
   logradouro VARCHAR(255) NOT NULL,
   complemento VARCHAR(255),
+  status VARCHAR(15),
   infos TEXT
 );
 
