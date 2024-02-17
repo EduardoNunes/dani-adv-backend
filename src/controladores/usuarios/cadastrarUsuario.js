@@ -8,7 +8,7 @@ const cadastrarUsuario = async (req, res) => {
     const senhaCriptografada = await bcrypt.hash(senha, 10);
 
     await pool.query(
-      "insert into usuarios (nome, email, senha, cadastro) values ($1, $2, $3, $4) returning *",
+      "insert into usuarios (nome, email, senha, tipo_cadastro) values ($1, $2, $3, $4) returning *",
       [nome, email, senhaCriptografada, tipoCadastro]
     );
 

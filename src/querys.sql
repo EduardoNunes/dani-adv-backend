@@ -3,9 +3,9 @@ create database dani_site;
 create table usuarios (
   id serial primary key,
   nome varchar (100) not null,
-  email varchar (100) not null,
+  email varchar (100) not null UNIQUE,
   senha varchar (100) not null,
-  cadastro varchar (20) not null
+  tipo_cadastro varchar (20) not null
  );
 
 create table processos (

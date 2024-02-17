@@ -10,7 +10,7 @@ const listarClientes = require("../controladores/clientes/listarClientes");
 
 const rotas = express();
 
-rotas.get("/obterCliente/:id", obterCliente);
+rotas.get("/obterCliente/:id/:tipo_cadastro", obterCliente);
 
 rotas.use(verificarUsuarioLogado);
 

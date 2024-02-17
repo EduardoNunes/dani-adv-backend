@@ -1,13 +1,21 @@
 const pool = require("../../conexao");
 
 const obterCliente = async (req, res) => {
-    const id = req.params.id;
+  const { id, tipo_cadastro } = req.params;
 
   try {
-    const resultado = await pool.query("select * from usuarios where id = $1", [
-      id,
-    ]);
+    let resultado;
 
+    if (tipo_cadastro === "cliente") {
+      resultado = await pool.query(
+        "select * from cliente_dados where id = $1",
+        [id]
+      );
+    } else {
+      resultado = await pool.query("select * from usuarios where id = $1", [
+        id,
+      ]);
+    }
     if (resultado.rows.length === 0) {
       return res.status(404).json({ mensagem: "Cliente não encontrado" });
     }

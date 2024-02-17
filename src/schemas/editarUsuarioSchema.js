@@ -27,6 +27,7 @@ const editarUsuarioSchema = joi.object({
       "string.pattern.base":
         "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 dos seguintes símbolos: @, $, !, %, ? ou &",
     }),
+    tipo_cadastro: joi.required(),
 });
 
 module.exports = editarUsuarioSchema;

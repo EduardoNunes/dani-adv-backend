@@ -13,7 +13,7 @@ const cadastrarProcesso = async (req, res) => {
     status,
     infos,
     cliente_id,
-  } = req.body; 
+  } = req.body;
 
   try {
     if (!cliente_id) {
@@ -23,7 +23,7 @@ const cadastrarProcesso = async (req, res) => {
     }
 
     const usuarioExistente = await pool.query(
-      "SELECT id FROM usuarios WHERE id = $1",
+      "SELECT id FROM cliente_dados WHERE id = $1",
       [cliente_id]
     );
 
