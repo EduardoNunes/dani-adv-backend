@@ -54,6 +54,25 @@ const cadastroClienteEscritorioSchema = joi.object({
   }),
   complemento: joi.string().allow(null, ""),
   status: joi.string(),
+  senha: joi
+    .string()
+    .required()
+    .min(8)
+    .pattern(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\])[0-9a-zA-Z!@#\$%\^&\*\(\)_\-=+'\[{\]};:'<,>.?\/\\]{8,}$/
+    )
+    .messages({
+      "any.required": "O campo senha é obrigatório",
+      "string.empty": "O campo senha é obrigatório",
+      "string.min": "A senha deve ter no mínimo 8 caracteres",
+      "string.trim": "O campo senha não pode conter espaços em branco",
+      "string.base": "Insira uma senha válida",
+      "string.pattern.base":
+        "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial",
+    }),
+  tipo_cadastro: joi.required().messages({
+    "any.required": "O campo tipo de cadastro deve ser selecionado",
+  }),
   infos: joi.string().allow(null, ""),
 });
 

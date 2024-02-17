@@ -29,9 +29,7 @@ const cadastroUsuarioSchema = joi.object({
       "string.pattern.base":
         "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial",
     }),
-  tipoCadastro: joi.required().messages({
-    "any.required": "O campo tipo de cadastro deve ser selecionado",
-  }),
+  tipoCadastro: joi.required()
 });
 
 module.exports = cadastroUsuarioSchema;

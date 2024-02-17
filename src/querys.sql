@@ -10,7 +10,7 @@ create table usuarios (
 
 create table processos (
   id serial primary key,
-  usuarios_id integer not null references usuarios(id),
+  cliente_id integer not null references cliente_dados(id),
   autor text not null,
   reu text not null,
   numero text not null,
@@ -19,7 +19,8 @@ create table processos (
   comarca text not null,
   data_entrada text not null,
   atualizado text not null,
-  infos text not null
+  infos text not null,
+  status VARCHAR not null
   );
 
 CREATE TABLE cliente_dados (
@@ -43,6 +44,8 @@ CREATE TABLE cliente_dados (
   logradouro VARCHAR(255) NOT NULL,
   complemento VARCHAR(255),
   status VARCHAR(15),
+  senha VARCHAR(255) NOT NULL,
+  tipo_cadastro VARCHAR(15) NOT NULL,
   infos TEXT
 );
 

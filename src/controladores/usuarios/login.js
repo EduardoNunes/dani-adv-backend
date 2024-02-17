@@ -7,22 +7,36 @@ const login = async (req, res) => {
   const { email, senha, tipoCadastro } = req.body;
 
   try {
-    const usuario = await pool.query(
-      "select * from usuarios where email = $1",
-      [email]
-    );
-
+    let usuario;
+    
+    if (tipoCadastro === "cliente") {
+      usuario = await pool.query(
+        "select * from cliente_dados where email = $1",
+        [email]
+      );
+    } else {
+      usuario = await pool.query("select * from usuarios where email = $1", [
+        email,
+      ]);
+      console.log("usuarioooooooooo", usuario.rows[0])
+      console.log("tipooo", tipoCadastro)
+    }
+    
     if (usuario.rowCount < 1) {
-      return res.status(404).json({ mensagem: "Email e/ou senha inválido(s).." });
+      return res
+        .status(404)
+        .json({ mensagem: "Email e/ou senha inválido(s).." });
     }
 
     const senhaValida = await bcrypt.compare(senha, usuario.rows[0].senha);
 
     if (!senhaValida) {
-      return res.status(400).json({ mensagem: "Email e/ou senha inválido(s)..." });
+      return res
+        .status(400)
+        .json({ mensagem: "Email e/ou senha inválido(s)..." });
     }
 
-    if (usuario.rows[0].cadastro !== tipoCadastro) {
+    if (usuario.rows[0].tipo_cadastro !== tipoCadastro) {
       return res.status(400).json({
         mensagem: `Usuário não encontrado na categoria ${tipoCadastro}`,
       });
@@ -36,7 +50,8 @@ const login = async (req, res) => {
       }
     );
 
-    const { senha: _, ...usuarioLogado } = usuario.rows[0];
+    const { id, nome, tipo_cadastro } = usuario.rows[0];
+    const usuarioLogado = { id, nome, tipo_cadastro };
 
     return res.json({ usuario: usuarioLogado, token });
   } catch (error) {
