@@ -3,9 +3,11 @@ const pool = require("../../conexao");
 const editarProcesso = async (req, res) => {
   const { id } = req.params;
   const {
+    contratante,
     autor,
     reu,
     numero,
+    tipo_acao,
     vara,
     juiz,
     comarca,
@@ -25,11 +27,13 @@ const editarProcesso = async (req, res) => {
     }
 
     await pool.query(
-      "update processos set autor = $1, reu = $2, numero = $3, vara = $4, juiz = $5, comarca = $6, data_entrada =  $7, atualizado = $8, status = $9, infos = $10 where id = $11",
+      "update processos set contratante = $1, autor = $2, reu = $3, numero = $4, tipo_acao = $5, vara = $6, juiz = $7, comarca = $8, data_entrada =  $9, atualizado = $10, status = $11, infos = $12 where id = $13",
       [
+        contratante,
         autor,
         reu,
         numero,
+        tipo_acao,
         vara,
         juiz,
         comarca,

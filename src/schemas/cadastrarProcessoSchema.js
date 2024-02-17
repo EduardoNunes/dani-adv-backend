@@ -1,6 +1,10 @@
 const joi = require("joi");
 
 const cadastrarProcessoSchema = joi.object({
+  contratante: joi.string().required().messages({
+    "any.required": "O campo contratante é obrigatório",
+    "string.empty": "O campo contratante é obrigatório",
+  }),
   autor: joi.string().required().messages({
     "any.required": "O campo autor é obrigatório",
     "string.empty": "O campo autor é obrigatório",
@@ -10,6 +14,10 @@ const cadastrarProcessoSchema = joi.object({
     "string.empty": "O campo reu é obrigatório",
   }),
   numero: joi.string().required().messages({
+    "any.required": "O campo numero é obrigatório",
+    "string.empty": "O campo numero é obrigatório",
+  }),
+  tipo_acao: joi.string().required().messages({
     "any.required": "O campo numero é obrigatório",
     "string.empty": "O campo numero é obrigatório",
   }),

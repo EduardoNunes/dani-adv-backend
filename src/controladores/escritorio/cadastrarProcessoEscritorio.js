@@ -2,9 +2,11 @@ const pool = require("../../conexao");
 
 const cadastrarProcesso = async (req, res) => {
   const {
+    contratante,
     autor,
     reu,
     numero,
+    tipo_acao,
     vara,
     juiz,
     comarca,
@@ -32,11 +34,13 @@ const cadastrarProcesso = async (req, res) => {
     }
 
     await pool.query(
-      "insert into processos (autor, reu, numero, vara, juiz, comarca, data_entrada, atualizado, status, infos, cliente_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
+      "insert into processos (contratante, autor, reu, numero, tipo_acao, vara, juiz, comarca, data_entrada, atualizado, status, infos, cliente_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
       [
+        contratante,
         autor,
         reu,
         numero,
+        tipo_acao,
         vara,
         juiz,
         comarca,

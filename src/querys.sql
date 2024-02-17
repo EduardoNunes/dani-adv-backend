@@ -11,16 +11,18 @@ create table usuarios (
 create table processos (
   id serial primary key,
   cliente_id integer not null references cliente_dados(id),
+  contratante text not null,
   autor text not null,
   reu text not null,
   numero text not null,
+  tipo_acao text not null,
   vara text not null,
   juiz text not null,
   comarca text not null,
   data_entrada text not null,
   atualizado text not null,
-  infos text not null,
-  status VARCHAR not null
+  status VARCHAR not null,
+  infos text not null  
   );
 
 CREATE TABLE cliente_dados (
