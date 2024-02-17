@@ -10,12 +10,12 @@ const verificarUsuarioLogado = async (req, res, next) => {
   }
 
   const token = authorization.split(" ")[1];
-
+  
   try {
     const { id, cadastro } = jwt.verify(token, senhaJwt);
 
     const { rows, rowCount } = await pool.query(
-      "select * from usuarios where id = $1",
+      "select * from cliente_dados where id = $1",
       [id]
     );
 

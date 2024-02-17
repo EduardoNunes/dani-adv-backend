@@ -8,7 +8,6 @@ const login = async (req, res) => {
 
   try {
     let usuario;
-    console.log(tipoCadastro)
     if (tipoCadastro === "cliente") {
       usuario = await pool.query(
         "select * from cliente_dados where email = $1",
@@ -18,7 +17,6 @@ const login = async (req, res) => {
       usuario = await pool.query("select * from usuarios where email = $1", [
         email,
       ]);
-      console.log(usuario.rows);
     }
 
     if (usuario.rowCount < 1) {

@@ -5,7 +5,7 @@ const listarProcessos = async (req, res) => {
 
   try {
     const resultado = await pool.query(
-      "select * from processos where usuarios_id = $1",
+      "select * from processos where cliente_id = $1",
       [usuarioId]
     );
 
