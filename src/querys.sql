@@ -65,7 +65,8 @@ create table financeiro (
   total VARCHAR (255)
 );
 
-    SELECT
+/* Conta quantos processos existem na tabela processos para cada cliente da tabela clientes_dados */
+SELECT
     cliente_dados.id AS cliente_id,
     cliente_dados.nome AS cliente_nome,
     COUNT(processos.id) AS quantidade_de_processos
