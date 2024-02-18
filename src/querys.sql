@@ -24,6 +24,7 @@ create table processos (
   status VARCHAR not null,
   infos text not null  
   );
+  
 
 CREATE TABLE cliente_dados (
   id SERIAL PRIMARY KEY,
@@ -50,6 +51,30 @@ CREATE TABLE cliente_dados (
   tipo_cadastro VARCHAR(15) NOT NULL,
   infos TEXT
 );
+
+create table financeiro (
+  id serial primary key,
+  processos_id integer not null references processos(id),
+  entrada VARCHAR (255),
+  data_entrada VARCHAR (255),
+  quantidade_parcelas VARCHAR (255),
+  valor_parcelas VARCHAR (255),
+  datas_parcelas VARCHAR (255),
+  porcentagem_final VARCHAR (255),
+  data_porcentage_final VARCHAR (255),
+  total VARCHAR (255)
+);
+
+    SELECT
+    cliente_dados.id AS cliente_id,
+    cliente_dados.nome AS cliente_nome,
+    COUNT(processos.id) AS quantidade_de_processos
+FROM
+    cliente_dados
+LEFT JOIN
+    processos ON cliente_dados.id = processos.cliente_id
+GROUP BY
+    cliente_dados.id, cliente_dados.nome;
 
 insert into usuarios (nome, email, senha, cadastro) 
 values ('Eduardo Lago Nunes', 'eduardolagonunes@gmail.com', '123456', 'cliente');
