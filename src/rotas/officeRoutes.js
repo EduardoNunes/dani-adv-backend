@@ -15,6 +15,7 @@ const autenticarCadastroClienteEscritorio = require("../intermediarios/autentica
 const cadastrarClienteEscritorioSchema = require("../schemas/cadastroClienteEscritorioSchema");
 const deletarCliente = require("../controladores/clientes/deletarClienteEscritorio");
 const editarClienteEscritorio = require("../controladores/escritorio/editarClienteEscritorio");
+const cadastrarFinanceiroProcesso = require("../controladores/escritorio/cadastrarFinanceiroProcesso");
 
 const rotas = express();
 
@@ -39,5 +40,6 @@ rotas.post(
   autenticarCadastroProcesso(cadastrarProcessoSchema),
   cadastrarProcesso
 );
+rotas.post("/cadastrarFinanceiroProcesso", cadastrarFinanceiroProcesso)
 
 module.exports = rotas;
