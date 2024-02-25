@@ -1,4 +1,4 @@
-create database dani_site;
+  create database dani_site;
 
 create table usuarios (
   id serial primary key,
@@ -60,6 +60,7 @@ create table financeiro (
   quantidade_parcelas VARCHAR (255),
   valor_parcelas VARCHAR (255),
   datas_parcelas VARCHAR (255),
+  parcelas_pagas varchar (255),
   porcentagem_final VARCHAR (255),
   data_porcentage_final VARCHAR (255),
   total VARCHAR (255)
