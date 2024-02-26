@@ -8,7 +8,7 @@ const editarFinanceiroProcessoEscritorio = async (req, res) => {
       "select * from financeiro where processos_id = $1",
       [id]
     );
-    console.log(financeiro.rows)
+
     if (financeiro.rows.length === 0) {
       return res
         .status(404)
