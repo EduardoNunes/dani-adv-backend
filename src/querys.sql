@@ -62,7 +62,7 @@ create table financeiro (
   datas_parcelas VARCHAR (255),
   parcelas_pagas varchar (255),
   porcentagem_final VARCHAR (255),
-  data_porcentage_final VARCHAR (255),
+  data_porcentagem_final VARCHAR (255),
   total VARCHAR (255)
 );
 

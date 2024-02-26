@@ -7,6 +7,7 @@ const cadastrarFinanceiroProcesso = async (req, res) => {
     quantidade_parcelas,
     valor_parcelas,
     datas_parcelas,
+    parcelas_pagas,
     porcentagem_final,
     data_porcentagem_final,
     total,
@@ -30,13 +31,14 @@ const cadastrarFinanceiroProcesso = async (req, res) => {
     }
 
     const resultado = await pool.query(
-      "insert into financeiro (entrada, data_entrada, quantidade_parcelas, valor_parcelas, datas_parcelas, porcentagem_final, data_porcentagem_final, total, processos_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
+      "insert into financeiro (entrada, data_entrada, quantidade_parcelas, valor_parcelas, datas_parcelas, parcelas_pagas, porcentagem_final, data_porcentagem_final, total, processos_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
       [
         entrada,
         data_entrada_processo,
         quantidade_parcelas,
         valor_parcelas,
         datas_parcelas,
+        parcelas_pagas,
         porcentagem_final,
         data_porcentagem_final,
         total,
