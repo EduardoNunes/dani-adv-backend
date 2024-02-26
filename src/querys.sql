@@ -59,10 +59,12 @@ create table financeiro (
   data_entrada VARCHAR (255),
   quantidade_parcelas VARCHAR (255),
   valor_parcelas VARCHAR (255),
-  datas_parcelas VARCHAR (255),
-  parcelas_pagas varchar (255),
+  datas_parcelas VARCHAR (255)[],
+  parcelas_pagas varchar (255)[],
   porcentagem_final VARCHAR (255),
   data_porcentagem_final VARCHAR (255),
+  condenacao VARCHAR (255),
+  resultado_porcentagem VARCHAR (255),
   total VARCHAR (255)
 );
 
