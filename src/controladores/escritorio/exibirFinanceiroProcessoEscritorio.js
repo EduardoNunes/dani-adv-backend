@@ -1,8 +1,11 @@
 const pool = require("../../conexao");
 
-const deletarFinanceiroProcessoEscritorio = async (req, res) => {
+const exibirFinanceiroProcessoEscritorio = async (req, res) => {
   const { id } = req.params;
-  console.log(id, "PROCESSO")
+  const {
+    
+  } = req.params
+
   try {
     const financeiro = await pool.query(
       "select * from financeiro where processos_id = $1",
@@ -12,16 +15,14 @@ const deletarFinanceiroProcessoEscritorio = async (req, res) => {
     if (financeiro.rows.length === 0) {
       return res
         .status(404)
-        .json({ mensagem: "Os dados financeiros não existem" });
+        .json({ mensagem: "Este processo não tem um financeiro cadastrado." });
     }
-
-    await pool.query("delete from financeiro where processos_id = $1", [id]);
-
-    return res.status(201).json({ mensagem: "Financeiro excluído com sucesso!" });
+    
+    return res.status(201).json(financeiro.rows);
   } catch (error) {
     console.error(error.message);
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 };
 
-module.exports = deletarFinanceiroProcessoEscritorio;
+module.exports = exibirFinanceiroProcessoEscritorio;

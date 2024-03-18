@@ -16,8 +16,9 @@ const cadastrarClienteEscritorioSchema = require("../schemas/cadastroClienteEscr
 const deletarCliente = require("../controladores/clientes/deletarClienteEscritorio");
 const editarClienteEscritorio = require("../controladores/escritorio/editarClienteEscritorio");
 const cadastrarFinanceiroProcesso = require("../controladores/escritorio/cadastrarFinanceiroProcesso");
-const editarFinanceiroProcessoEscritorio = require("../controladores/escritorio/editarFinanceiroProcessoEscritorio");
+const exibirFinanceiroProcessoEscritorio = require("../controladores/escritorio/exibirFinanceiroProcessoEscritorio");
 const deletarFinanceiroProcessoEscritorio = require("../controladores/escritorio/deletarFinanceiroProcessoEscritorio");
+const editarFinanceiroProcessoEscritorio = require("../controladores/escritorio/editarFinanceiroProcessoEscritorio");
 
 const rotas = express();
 
@@ -44,6 +45,10 @@ rotas.post(
 );
 rotas.post("/cadastrarFinanceiroProcesso", cadastrarFinanceiroProcesso);
 rotas.get(
+  "/exibirFinanceiroProcessoEscritorio/:id",
+  exibirFinanceiroProcessoEscritorio
+);
+rotas.put(
   "/editarFinanceiroProcessoEscritorio/:id",
   editarFinanceiroProcessoEscritorio
 );

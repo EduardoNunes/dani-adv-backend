@@ -59,8 +59,7 @@ create table financeiro (
   data_entrada VARCHAR (255),
   quantidade_parcelas VARCHAR (255),
   valor_parcelas VARCHAR (255),
-  datas_parcelas VARCHAR (255),
-  parcelas_pagas varchar (255),
+  datas_parcelas VARCHAR (255), 
   porcentagem_final VARCHAR (255),
   data_porcentagem_final VARCHAR (255),
   condenacao VARCHAR (255),
@@ -105,3 +104,25 @@ values ('Fulano Lordello Oliveira',
         '25/12/2023', 
         'Processo finalizado, transitado em julgado, habilitado na recuperação judicial. Acompanhando.', 
         '7');
+
+/* Definir o status da tabela processo baseado na coluna datas_parcelas da tabela financeiro */
+
+UPDATE processos
+SET status = 
+    CASE 
+        WHEN EXISTS (
+            SELECT 1 FROM financeiro 
+            WHERE datas_parcelas LIKE '%:Vencida%' 
+                AND financeiro.processos_id = processos.id
+        ) THEN 'atrasado'
+        WHEN NOT EXISTS (
+            SELECT 1 FROM financeiro 
+            WHERE datas_parcelas LIKE '%:Vencida%' 
+                AND financeiro.processos_id = processos.id
+        ) AND NOT EXISTS (
+            SELECT 1 FROM financeiro 
+            WHERE datas_parcelas LIKE '%:Pendente%' 
+                AND financeiro.processos_id = processos.id
+        ) THEN 'Quitado'
+        ELSE 'em dia'
+    END;
