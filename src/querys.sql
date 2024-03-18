@@ -114,7 +114,7 @@ SET status =
             SELECT 1 FROM financeiro 
             WHERE datas_parcelas LIKE '%:Vencida%' 
                 AND financeiro.processos_id = processos.id
-        ) THEN 'atrasado'
+        ) THEN 'Atrasado'
         WHEN NOT EXISTS (
             SELECT 1 FROM financeiro 
             WHERE datas_parcelas LIKE '%:Vencida%' 
@@ -124,5 +124,5 @@ SET status =
             WHERE datas_parcelas LIKE '%:Pendente%' 
                 AND financeiro.processos_id = processos.id
         ) THEN 'Quitado'
-        ELSE 'em dia'
+        ELSE 'Em dia'
     END;

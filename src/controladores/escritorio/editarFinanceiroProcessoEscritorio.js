@@ -42,7 +42,7 @@ const editarFinanceiroProcessoEscritorio = async (req, res) => {
             SELECT 1 FROM financeiro 
             WHERE datas_parcelas LIKE '%:Vencida%' 
                 AND financeiro.processos_id = $1
-        ) THEN 'atrasado'
+        ) THEN 'Atrasado'
         WHEN NOT EXISTS (
             SELECT 1 FROM financeiro 
             WHERE datas_parcelas LIKE '%:Vencida%' 
@@ -52,7 +52,7 @@ const editarFinanceiroProcessoEscritorio = async (req, res) => {
             WHERE datas_parcelas LIKE '%:Pendente%' 
                 AND financeiro.processos_id = $1
         ) THEN 'Quitado'
-        ELSE 'em dia'
+        ELSE 'Em dia'
       END
     WHERE id = $1;
   `,
